@@ -1,22 +1,20 @@
-# Government Furnished Equipment (GFE) #
+```
+This material is based upon work supported by the Defense Advanced
+Research Project Agency (DARPA) under Contract No. HR0011-18-C-0013. 
+Any opinions, findings, conclusions or recommendations expressed in
+this material are those of the author(s) and do not necessarily
+reflect the views of DARPA.
 
-[![pipeline status](https://gitlab-ext.galois.com/ssith/gfe/badges/develop/pipeline.svg)](https://gitlab-ext.galois.com/ssith/gfe/commits/develop)
+Distribution Statement "A" (Approved for Public Release, Distribution
+Unlimited)
+```
 
-Source files and build scripts for generating and testing the GFE for SSITH.
+# BESSPIN Government Furnished Equipment (GFE) #
+
+Source files and build scripts for generating and testing the BESSPIN GFE.
 
 Please refer to the [GFE System Description pdf](GFE_Rel5.2_System_Description.pdf)
 for a high-level overview of the system.
-
-## Release Schedule ##
-
-Below is the planned release schedule for the remainder of Phase 2 of the BESSPIN program.
-
-Links to related GitLab milestones:
-* [GFE Release 5.0](https://gitlab-ext.galois.com/ssith/gfe/-/milestones/2)
-* [GFE Release 5.1](https://gitlab-ext.galois.com/ssith/gfe/-/milestones/7)
-* [GFE Release 5.2](https://gitlab-ext.galois.com/ssith/gfe/-/milestones/8)
-
-<img src="documentation_source/images/gfe-release-schedule.png" width = "800" height = "410">
 
 ## Table of contents ##
 
@@ -155,7 +153,7 @@ sudo ./install/deps.sh
 sudo ./install/build-openocd.sh
 (cd install; sudo ./download-toolchains.sh)
 # WARNING: tar will overwrite any existing /opt/riscv/ tree!
-sudo tar -C /opt -xf install/riscv-gnu-toolchains.tar.gz
+sudo tar -C / -xf install/riscv-gnu-toolchains.tar.gz
 ```
 
 The `riscv32-unknown-elf-*` tools are not included in this `/opt/riscv`
@@ -330,20 +328,9 @@ Follow these steps to run FreeRTOS with an interactive GDB session:
    configured to have 8 data bits, 2 stop bits, no parity bits, and a
    baud rate of 115200.
 
-4. In a new shell, run GDB with
-   `riscv64-unknown-elf-gdb $GFE_REPO/FreeRTOS-mirror/FreeRTOS/Demo/RISC-V_Galois_P1/main_blinky.elf`,
-   where `main_blinky` should be the name of the demo you have
-   compiled and want to run.
+3. In a new shell, run GDB with `riscv64-unknown-elf-gdb -x bootmem/startup.gdb $GFE_REPO/FreeRTOS-mirror/FreeRTOS/Demo/RISC-V_Galois_P1/main_blinky.elf`, where `main_blinky` should be the name of the demo you have compiled and want to run. The startup gdb script resets the SoC and connects gdb to OpenOCD. 
 
-5. Once GDB is open, type `target remote localhost:3333` to connect to
-   OpenOCD. OpenOCD should give a message that it has accepted a GDB
-   connection.
-
-   Load the FreeRTOS ELF file onto the processor with `load`. To run,
-   type `c` or `continue`.
-
-6. When you've finished running FreeRTOS, make sure to reset the SoC
-   before running other tests or programs.
+4. To run, type `c` or `continue`.
 
 The expected output from simple blinky test is:
 ```

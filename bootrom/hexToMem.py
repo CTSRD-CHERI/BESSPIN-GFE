@@ -1,4 +1,4 @@
-#!/usr/local/bin/python
+#!/usr/bin/env python3
 # Translate riscv hex to a byte reversed .mem file
 import byteReverseMem
 

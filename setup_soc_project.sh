@@ -19,6 +19,43 @@ proc_path=""
 # Clock frequency is in MHz
 clock_freq_mhz=50
 
+usage() {
+    echo >&2 "Usage: $0 [--mem-size MEM_SIZE] <proc> [bootrom]"
+    exit 1
+}
+
+if [ $# -lt 1 ]; then
+    usage
+fi
+
+while [ $# -ge 1 ]; do
+    case "$1" in
+    --mem-size=*)
+        mem_size=${1#--mem-size=}
+        shift
+        ;;
+    --mem-size)
+        shift
+        if [ $# -lt 1 ]; then
+            usage
+        fi
+        mem_size=$1
+        shift
+        ;;
+    --*)
+        echo >&2 "Unknown option ${1#--*=}"
+        exit 1
+        ;;
+    *)
+        break
+        ;;
+    esac
+done
+
+if [ $# -lt 1 ] || [ $# -gt 2 ]; then
+    usage
+fi
+
 # Parse the processor selection
 proc_picker $1
 
@@ -62,7 +99,7 @@ fi
 cd $BASE_DIR/bootrom-configured
 case "$proc_name" in
     *p1)
-	make --always-make XLEN=32 CROSS_COMPILE=riscv64-unknown-elf- CPU_SPEED=50000000 NO_PCI=$no_xdma PROC_HASH=$proc_hash GFE_HASH=$gfe_hash
+	make --always-make XLEN=32 CROSS_COMPILE=riscv64-unknown-elf- CPU_SPEED=50000000 NO_PCI=$no_xdma ${mem_size:+MEM_SIZE=$mem_size} PROC_HASH=$proc_hash GFE_HASH=$gfe_hash
 	clock_freq_mhz=50
 	;;
     *p2*)
@@ -70,11 +107,11 @@ case "$proc_name" in
 	clock_freq_mhz=50
 	;;
     bluespec_p3)
-	make --always-make XLEN=64 CROSS_COMPILE=riscv64-unknown-elf- CPU_SPEED=25000000 RTC_FREQ=250000 MEM_SIZE=0xbe000000 NO_PCI=$no_xdma NUM_CORES=$num_cores PROC_HASH=$proc_hash GFE_HASH=$gfe_hash
+	make --always-make XLEN=64 CROSS_COMPILE=riscv64-unknown-elf- CPU_SPEED=25000000 RTC_FREQ=250000 MEM_SIZE=${mem_size:-0xbe000000} NO_PCI=$no_xdma NUM_CORES=$num_cores PROC_HASH=$proc_hash GFE_HASH=$gfe_hash
 	clock_freq_mhz=25
 	;;
     chisel_p3)
-	make --always-make XLEN=64 CROSS_COMPILE=riscv64-unknown-elf- CPU_SPEED=25000000 NO_PCI=$no_xdma PROC_HASH=$proc_hash GFE_HASH=$gfe_hash
+	make --always-make XLEN=64 CROSS_COMPILE=riscv64-unknown-elf- CPU_SPEED=25000000 NO_PCI=$no_xdma ${mem_size:+MEM_SIZE=$mem_size} PROC_HASH=$proc_hash GFE_HASH=$gfe_hash
 	clock_freq_mhz=25
 	;;
     *)

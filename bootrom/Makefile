@@ -6,7 +6,7 @@ bootrom_coe = bootrom.coe
 NO_PCI?=0
 CPU_SPEED?=0
 RTC_FREQ?=0
-MEM_SIZE?=0
+MEM_SIZE?=0x3f000000
 NUM_CORES?=1
 CROSS_COMPILE?=riscv64-unknown-elf-
 CPP=$(CROSS_COMPILE)cpp
@@ -21,11 +21,11 @@ all: $(bootrom_img) $(bootrom_mem) $(bootrom_coe) $(bootrom_rev_mem)
 	(echo @00000000; od -tx4 -An -w4 -v $<) > $@
 
 %.bytereversed.mem: %.mem
-	cat $< | python byteReverseMem.py > $@
+	cat $< | ./byteReverseMem.py > $@
 
 %.coe: %.bin
 	hexdump -e '16/4 "%02x " "\n"' $*.bin > $*.hex
-	python genCoe.py > $@
+	./genCoe.py > $@
 
 %.img: %.bin
 	dd if=$< of=$@ bs=1440 count=1

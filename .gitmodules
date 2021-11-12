@@ -1,20 +1,19 @@
 [submodule "chisel_processors"]
 	path = chisel_processors
-	url = ../chisel_processors.git
-	branch = update_p1_chisel
+	url = https://github.com/GaloisInc/BESSPIN-chisel_processors.git
 [submodule "bluespec-processors/P1/Piccolo"]
 	path = bluespec-processors/P1/Piccolo
 	url = https://github.com/CTSRD-CHERI/Piccolo.git
 	branch = CHERI
 [submodule "FreeRTOS-mirror"]
 	path = FreeRTOS-mirror
-	url = https://github.com/GaloisInc/FreeRTOS-mirror.git
+	url = https://github.com/GaloisInc/BESSPIN-FreeRTOS-mirror.git
 [submodule "bluespec-processors/P2/Flute"]
 	path = bluespec-processors/P2/Flute
 	url = https://github.com/CTSRD-CHERI/Flute.git
 [submodule "riscv-linux"]
 	path = riscv-linux
-	url = ../riscv-linux.git
+	url = https://github.com/GaloisInc/BESSPIN-riscv-linux.git
 [submodule "bluespec-processors/P3/Toooba"]
 	path = bluespec-processors/P3/Toooba
 	url = https://github.com/CTSRD-CHERI/Toooba.git
@@ -23,24 +22,26 @@
 	url = https://github.com/riscv/riscv-pk.git
 [submodule "riscv-tests"]
 	path = riscv-tests
-	url = ../riscv-tests.git
+	url = https://github.com/GaloisInc/BESSPIN-riscv-tests.git
 [submodule "busybox"]
 	path = busybox
 	url = https://github.com/mirror/busybox.git
 [submodule "riscv-openocd"]
 	path = riscv-openocd
-	url = ../riscv-openocd.git
+	url = https://github.com/GaloisInc/BESSPIN-riscv-openocd.git
 [submodule "newlib"]
 	path = newlib
 	url = https://github.com/CTSRD-CHERI/newlib
 	branch = p1_release
 [submodule "benchmarks/coremark"]
 	path = benchmarks/coremark
-	url = git@gitlab-ext.galois.com:ssith/coremark.git
+	url = https://github.com/GaloisInc/BESSPIN-coremark.git
 [submodule "freebsd/cheribsd"]
 	path = freebsd/cheribsd
 	url = https://github.com/CTSRD-CHERI/cheribsd.git
 [submodule "benchmarks/mibench2"]
 	path = benchmarks/mibench2
-	url = git@gitlab-ext.galois.com:ssith/mibench2.git
-	branch = ssith
+	url = https://github.com/GaloisInc/BESSPIN-mibench2.git
+[submodule "cloudGFE"]
+	path = cloudGFE
+	url = https://github.com/GaloisInc/BESSPIN-CloudGFE

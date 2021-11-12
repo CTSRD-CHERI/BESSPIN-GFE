@@ -10,10 +10,6 @@
 #define RTC_FREQ CPU_SPEED
 #endif
 
-#if MEM_SIZE == 0
-#define MEM_SIZE 0x3f000000
-#endif
-
 #if __riscv_xlen == 32
 #define _CPU_RISCV_ISA riscv,isa = "rv32imac";
 #define _CPU_MMU_TYPE
@@ -119,7 +115,7 @@
 				>;
 			reg = <0x10000000 0x10000>;
 		};
-		plic: interrupt-controller@11000000 {
+		plic: interrupt-controller@c000000 {
 			#interrupt-cells = <1>;
 			compatible = "riscv,plic0";
 			interrupt-controller;

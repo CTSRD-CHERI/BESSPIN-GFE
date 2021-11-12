@@ -10,10 +10,10 @@ if [ -d /opt/riscv ]; then
 fi
 
 echo "Bulding GNU toolchain"
-if [ ! -d /tmpt/riscv-gnu-toolchain ]; then
-    git clone https://github.com/riscv/riscv-gnu-toolchain /tmpt/riscv-gnu-toolchain
+if [ ! -d /tmp/riscv-gnu-toolchain ]; then
+    git clone https://github.com/riscv/riscv-gnu-toolchain /tmp/riscv-gnu-toolchain
 fi
-cd riscv-gnu-toolchain
+cd /tmp/riscv-gnu-toolchain
 git clean -f
 rm -f Makefile
 git pull
@@ -27,4 +27,5 @@ cd ..
 echo "GNU toolchain built!"
 
 # Cleanup
-rm -rf /tmpt/riscv-gnu-toolchain
+rm -rf /tmp/riscv-gnu-toolchain
+
