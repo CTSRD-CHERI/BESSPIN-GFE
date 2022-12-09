@@ -99,20 +99,20 @@ fi
 cd $BASE_DIR/bootrom-configured
 case "$proc_name" in
     *p1)
-	make --always-make XLEN=32 CROSS_COMPILE=riscv64-unknown-elf- CPU_SPEED=200000000 NO_PCI=$no_xdma ${mem_size:+MEM_SIZE=$mem_size} PROC_HASH=$proc_hash GFE_HASH=$gfe_hash
-	clock_freq_mhz=200
+	make --always-make XLEN=32 CROSS_COMPILE=riscv64-unknown-elf- CPU_SPEED=150000000 NO_PCI=$no_xdma ${mem_size:+MEM_SIZE=$mem_size} PROC_HASH=$proc_hash GFE_HASH=$gfe_hash
+	clock_freq_mhz=150
 	;;
     *p2*)
-	make --always-make XLEN=64 CROSS_COMPILE=riscv64-unknown-elf- CPU_SPEED=200000000 NO_PCI=$no_xdma ${mem_size:+MEM_SIZE=$mem_size} PROC_HASH=$proc_hash GFE_HASH=$gfe_hash
-	clock_freq_mhz=200
+	make --always-make XLEN=64 CROSS_COMPILE=riscv64-unknown-elf- CPU_SPEED=150000000 NO_PCI=$no_xdma ${mem_size:+MEM_SIZE=$mem_size} PROC_HASH=$proc_hash GFE_HASH=$gfe_hash
+	clock_freq_mhz=150
 	;;
     bluespec_p3)
-	make --always-make XLEN=64 CROSS_COMPILE=riscv64-unknown-elf- CPU_SPEED=200000000 RTC_FREQ=250000 MEM_SIZE=${mem_size:-0xbe000000} NO_PCI=$no_xdma NUM_CORES=$num_cores PROC_HASH=$proc_hash GFE_HASH=$gfe_hash
-	clock_freq_mhz=200
+	make --always-make XLEN=64 CROSS_COMPILE=riscv64-unknown-elf- CPU_SPEED=150000000 RTC_FREQ=250000 MEM_SIZE=${mem_size:-0xbe000000} NO_PCI=$no_xdma NUM_CORES=$num_cores PROC_HASH=$proc_hash GFE_HASH=$gfe_hash
+	clock_freq_mhz=150
 	;;
     chisel_p3)
-	make --always-make XLEN=64 CROSS_COMPILE=riscv64-unknown-elf- CPU_SPEED=200000000 NO_PCI=$no_xdma ${mem_size:+MEM_SIZE=$mem_size} PROC_HASH=$proc_hash GFE_HASH=$gfe_hash
-	clock_freq_mhz=200
+	make --always-make XLEN=64 CROSS_COMPILE=riscv64-unknown-elf- CPU_SPEED=150000000 NO_PCI=$no_xdma ${mem_size:+MEM_SIZE=$mem_size} PROC_HASH=$proc_hash GFE_HASH=$gfe_hash
+	clock_freq_mhz=150
 	;;
     *)
 	echo "WARNING: don't know how to make a boot ROM for processor $proc_name"
