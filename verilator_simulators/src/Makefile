@@ -41,7 +41,8 @@ all: compile
 # ================================================================
 # Search path for bsc for .bsv files
 
-BSC_PATH = -p src_BSV:%/Libraries/TLM3:%/Libraries/Axi:%/Libraries/Axi4:procs/$(PROC):+
+# NB this expects bsc-contrib libraries to be unpacked into the bsc install
+BSC_PATH = -p src_BSV:%/Libraries/Bus:%/Libraries/AMBA_TLM3/TLM3:%/Libraries/AMBA_TLM3/Axi:%/Libraries/AMBA_TLM3/Axi4:procs/$(PROC):+
 
 # ----------------
 # Top-level file and module
