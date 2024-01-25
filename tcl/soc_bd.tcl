@@ -630,13 +630,13 @@ here on its own." [get_bd_cells /gfe_subsystem/axi_clock_converter_0]
   set axi_interconnect_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi_interconnect_0 ]
   set_property -dict [ list \
    CONFIG.ENABLE_ADVANCED_OPTIONS {1} \
-   CONFIG.M00_HAS_REGSLICE {4} \
+   CONFIG.M00_HAS_DATA_FIFO {1} \
    CONFIG.M01_HAS_REGSLICE {4} \
    CONFIG.M02_HAS_REGSLICE {4} \
    CONFIG.M03_HAS_REGSLICE {4} \
    CONFIG.M04_HAS_REGSLICE {4} \
    CONFIG.M05_HAS_REGSLICE {4} \
-   CONFIG.M06_HAS_REGSLICE {4} \
+   CONFIG.M06_HAS_DATA_FIFO {1} \
    CONFIG.M07_HAS_REGSLICE {4} \
    CONFIG.M08_HAS_REGSLICE {4} \
    CONFIG.M09_HAS_REGSLICE {4} \
@@ -646,8 +646,8 @@ here on its own." [get_bd_cells /gfe_subsystem/axi_clock_converter_0]
    CONFIG.M13_HAS_REGSLICE {4} \
    CONFIG.NUM_MI {7} \
    CONFIG.NUM_SI {6} \
-   CONFIG.S00_HAS_REGSLICE {4} \
-   CONFIG.S01_HAS_REGSLICE {4} \
+   CONFIG.S00_HAS_DATA_FIFO {1} \
+   CONFIG.S01_HAS_DATA_FIFO {1} \
    CONFIG.S02_HAS_REGSLICE {4} \
    CONFIG.S03_HAS_REGSLICE {4} \
    CONFIG.S04_HAS_REGSLICE {4} \
