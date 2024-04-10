@@ -129,6 +129,7 @@ cd $BASE_DIR/vivado
 
 # Run vivado to create a top level project
 # See soc.tcl for detailed options
+LD_PRELOAD=/lib/x86_64-linux-gnu/libudev.so.1 \
 vivado -mode batch -source $BASE_DIR/tcl/soc.tcl \
 -tclargs --origin_dir $BASE_DIR/tcl \
 --proc_name $proc_name \
