@@ -19,7 +19,7 @@ run ./build.sh chisel_p1"
 
 # Run vivado to build a top level project
 cd $BASE_DIR/vivado
-vivado -mode batch $vivado_project -source $BASE_DIR/tcl/build.tcl
+LD_PRELOAD=/lib/x86_64-linux-gnu/libudev.so.1 vivado -mode batch $vivado_project -source $BASE_DIR/tcl/build.tcl
 err_msg $? "Vivado build failed"
 
 # Copy bitstream to the bitstreams folder
