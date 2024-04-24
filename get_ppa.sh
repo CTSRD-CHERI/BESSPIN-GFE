@@ -66,3 +66,5 @@ grep -B 1 -A 1 "| *Instance" util_report_hier.log
 grep "| design_1 " util_report_hier.log
 grep "| *ssith_processor_0 " util_report_hier.log
 grep "| *tagController" util_report_hier.log
+
+exit 0
