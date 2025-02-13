@@ -23,7 +23,8 @@ vivado -mode batch $vivado_project -source $BASE_DIR/tcl/build.tcl
 err_msg $? "Vivado build failed"
 
 # Copy bitstream to the bitstreams folder
-bitstream=$BASE_DIR/vivado/${project_name}/${project_name}.runs/impl_1/design_1.bit 
+bitstream=$BASE_DIR/vivado/${project_name}/${project_name}.runs/impl_1/design_1.bit
+vivado -mode batch -source $BASE_DIR/tcl/make_spi_mcs.tcl -tclargs $bitstream ${bitstream%.bit}
 output_bitstream=$BASE_DIR/bitstreams/${project_name}.bit
 check_file $bitstream "Bitstream $bitstream not generated. Check Vivado logs"
 cp $bitstream $output_bitstream
