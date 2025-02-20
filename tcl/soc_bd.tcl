@@ -510,9 +510,9 @@ proc create_hier_cell_gfe_subsystem { parentCell nameHier } {
  ] $axi_bram_ctrl_0
 
   set axi_timer_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_timer:2.0 axi_timer_0 ]
-  #set_property -dict [ list \
-  # CONFIG.mode_64bit {1} \
-  #] $axi_timer_0
+  set_property -dict [ list \
+   CONFIG.mode_64bit {1} \
+  ] $axi_timer_0
 
   # Create instance: axi_clock_converter_0, and set properties
   set axi_clock_converter_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_clock_converter:2.1 axi_clock_converter_0 ]
