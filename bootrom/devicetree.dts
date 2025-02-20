@@ -198,6 +198,15 @@
 			 #interrupt-cells = <1>;
 		     };
 		};
+
+                axi_timer_0: timer@50000000 {
+                     clock-frequency = <CPU_SPEED>;
+                     compatible = "xlnx,xps-timer-1.00.a";
+                     interrupts-extended = <&plic 12>
+                     reg = <0x50000000 0x10000>;
+                     xlnx,count-width = <0x20>;
+                     xlnx,one-timer-only = <0x0>;
+                };
 #endif
 	};
 };
