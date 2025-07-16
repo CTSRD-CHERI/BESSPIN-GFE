@@ -2,6 +2,7 @@ bootrom_img = bootrom.img
 bootrom_rev_mem = bootrom.bytereversed.mem
 bootrom_mem = bootrom.mem
 bootrom_coe = bootrom.coe
+bootrom_elf = bootrom.elf
 
 NO_PCI?=0
 CPU_SPEED?=0
@@ -15,7 +16,7 @@ OBJCOPY=$(CROSS_COMPILE)objcopy
 OBJDUMP=$(CROSS_COMPILE)objdump
 DTC=dtc
 
-all: $(bootrom_img) $(bootrom_mem) $(bootrom_coe) $(bootrom_rev_mem)
+all: $(bootrom_img) $(bootrom_mem) $(bootrom_coe) $(bootrom_rev_mem) $(bootrom_elf)
 
 %.mem: %.bin
 	(echo @00000000; od -tx4 -An -w4 -v $<) > $@
